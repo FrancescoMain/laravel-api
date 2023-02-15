@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
 
-Route::get('/', [MainController :: class, 'home']);
+Route::get('/', [MainController :: class, 'home'])->name('home');
 
 Route::get('/movie', [MainController :: class, 'homeMovie'])
     ->name('home.movie');
+
+Route :: get('/movie/create', [MainController :: class, 'movieCreate'])
+    -> name('movie.create');
+
+Route :: post('/movie/store', [MainController :: class, 'movieStore'])
+    -> name('movie.store');    
