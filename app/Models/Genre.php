@@ -15,4 +15,8 @@ class Genre extends Model
         'description',
 
     ];
+
+    public function movies() {
+        return $this -> hasMany(Movie :: class);
+    }
 }

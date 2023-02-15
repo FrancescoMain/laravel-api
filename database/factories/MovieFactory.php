@@ -20,7 +20,7 @@ class MovieFactory extends Factory
             
 
         'name' => fake() -> words(2, true), 
-        'year' => fake() -> yar(), 
+        'year' => fake() -> year(), 
         'cashOut' => fake() -> numberBetween(0 , 100000) , 
 
     

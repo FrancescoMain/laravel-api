@@ -15,4 +15,8 @@ class Tag extends Model
         'description',
 
     ];
+
+    public function movies() {
+        return $this -> belongsToMany(Movie :: class);
+    }
 }
