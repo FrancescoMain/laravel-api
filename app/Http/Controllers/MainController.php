@@ -14,10 +14,15 @@ class MainController extends Controller
 
         $genres = Genre :: all();
 
-        // $data = [
-        //     'tasks' => $tasks
-        // ];
-
         return view('pages.home', compact('genres'));
     }
+
+        public function homeMovie() {
+
+        $movies = Movie :: all();
+
+        return view('pages.home-movie', compact('movies'));
+    }
 }
+
+

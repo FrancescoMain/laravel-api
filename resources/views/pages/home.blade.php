@@ -3,6 +3,8 @@
 @section('content')
     
     <h1>Films</h1>
+
+    <a href="{{ route('home.movie') }}">TUTTI I FILM</a>
     @foreach ($genres as $genre)
         <h2>{{ $genre -> name }}</h2>
         <ul>
