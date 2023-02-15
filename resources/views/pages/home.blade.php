@@ -2,6 +2,14 @@
 
 @section('content')
     
-    <h1>VINCENZO SEI BELLO</h1>
+    <h1>Films</h1>
+    @foreach ($genres as $genre)
+        <h2>{{ $genre -> name }}</h2>
+        <ul>
+            @foreach ($genre -> movies as $movie)
+                @include('components.movie.movie-elem')
+            @endforeach
+        </ul>
+    @endforeach
 
 @endsection
