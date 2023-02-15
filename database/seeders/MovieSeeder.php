@@ -21,6 +21,10 @@ class MovieSeeder extends Seeder
             $genre = Genre :: inRandomOrder() -> first();
             $p -> genre() -> associate($genre);
             $p -> save();
+
+            $tags =  Tag :: inRandomOrder() -> limit(5) -> get();
+            
+            $p -> tags() -> attach($tags);
         });
     }
 }

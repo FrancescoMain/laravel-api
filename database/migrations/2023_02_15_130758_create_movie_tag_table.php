@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('movie_tag', function (Blueprint $table) {
 
             $table -> id();
-            $table -> timestamps();
 
         });
     }
