@@ -16,10 +16,15 @@
         <br>
         <select name="genre_id">
             @foreach ($genres as $genre)
-            <option value="{{ $genre -> id }}">{{ $genre -> name }}</option>
+                <option value="{{ $genre -> id }}">{{ $genre -> name }}</option>
             @endforeach
         </select>
         <br>
+        <label>Tag</label>
+        @foreach ($tags as $tag)
+            <input type="checkbox" name="tags_id[]" value="{{$tag -> id}}" id="{{$tag -> id}}">
+            <label for="{{$tag -> id}}">{{$tag -> name}}</label>
+        @endforeach
         <input type="submit" value="CREATE NEW MOVIE">
     </form>
 

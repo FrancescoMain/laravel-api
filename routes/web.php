@@ -22,6 +22,8 @@ Route::get('/movie', [MainController :: class, 'homeMovie'])
 
 Route :: get('/movie/create', [MainController :: class, 'movieCreate'])
     -> name('movie.create');
-
 Route :: post('/movie/store', [MainController :: class, 'movieStore'])
     -> name('movie.store');    
+
+ Route :: get('/movie/update/{movie}', [MainController :: class, 'movieUpdate'])    
+    ->name('movie.update');

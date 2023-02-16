@@ -11,6 +11,13 @@
         <ul>
             @foreach ($genre -> movies as $movie)
                 @include('components.movie.movie-elem')
+                <ul>
+                    @foreach ($movie -> tags as $tag)
+                        <li>{{$tag -> name}}</li>
+                    @endforeach
+                </ul>
+                <a href="{{route ('movie.update', $movie)}}">edit</a>
+                <a href="">delete</a>
             @endforeach
         </ul>
     @endforeach

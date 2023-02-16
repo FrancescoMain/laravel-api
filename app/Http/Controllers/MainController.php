@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Movie;
 use App\Models\Genre;
+use App\Models\Tag;
 
 class MainController extends Controller
 {
@@ -27,8 +28,9 @@ class MainController extends Controller
     public function movieCreate() {
 
         $genres = Genre::all();
+        $tags = Tag::all();
 
-	return view('pages.movie.movieCreate', compact('genres'));
+	return view('pages.movie.movieCreate', compact('genres', 'tags'));
     }
 
     public function movieStore(Request $request) {
@@ -38,21 +40,35 @@ class MainController extends Controller
             'year' => 'required|integer',
             'cashOut' => 'required|integer|min:0',
             'genre_id' => 'required|integer',
+            'tags_id' => 'required|array',
+
         ]);
         
-	$movie = new movie();
+	// $movie = new movie();
 
-	$movie -> name = $data['name'];
-	$movie -> year = $data['year'];
-	$movie -> cashOut = $data['cashOut'];
+	// $movie -> name = $data['name'];
+	// $movie -> year = $data['year'];
+	// $movie -> cashOut = $data['cashOut'];
     
     $genre = Genre :: find($data['genre_id']);
-    $movie -> genre() -> associate($genre);
+    $movie = Movie :: make($data);
 
+    $movie -> genre() -> associate($genre);
 	$movie -> save();
 
+    $tags = Tag :: find($data['tags_id']);
+    $movie -> tags() -> sync($tags);
+
 	return redirect() -> route('home');
-}
+    }
+
+    public function movieUpdate (Movie $movie) {
+
+        $genres = Genre :: all();
+        $tags = Tag :: all();
+
+        return view('pages.movie.update' , compact('movie', 'genres', 'tags'));
+    }
 }
 
 
