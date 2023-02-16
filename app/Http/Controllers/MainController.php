@@ -62,12 +62,37 @@ class MainController extends Controller
 	return redirect() -> route('home');
     }
 
-    public function movieUpdate (Movie $movie) {
+    public function movieEdit (Movie $movie) {
 
         $genres = Genre :: all();
         $tags = Tag :: all();
 
         return view('pages.movie.update' , compact('movie', 'genres', 'tags'));
+    }
+
+    public function movieUpdate (Request $request, Movie $movie) {
+
+        $data = $request -> validate([
+            'name' => 'required|string|max:32',
+            'year' => 'required|integer',
+            'cashOut' => 'required|integer|min:0',
+            'genre_id' => 'required|integer',
+            'tags_id' => 'required|array',
+
+        ]);
+        
+    
+    $genre = Genre :: find($data['genre_id']);
+    $movie -> update($data);
+
+
+    $tags = Tag :: find($data['tags_id']);
+    $movie -> tags() -> sync($tags);
+
+	return redirect() -> route('home');
+
+
+
     }
 }
 

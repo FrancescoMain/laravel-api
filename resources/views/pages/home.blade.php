@@ -16,7 +16,7 @@
                         <li>{{$tag -> name}}</li>
                     @endforeach
                 </ul>
-                <a href="{{route ('movie.update', $movie)}}">edit</a>
+                <a href="{{route ('movie.edit', $movie)}}">edit</a>
                 <a href="">delete</a>
             @endforeach
         </ul>

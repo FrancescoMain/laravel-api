@@ -3,7 +3,7 @@
 @section('content')
     
     <h1>New movie</h1>
-    <form method="POST" action="">
+    <form method="POST" action="{{route('movie.update', $movie)}}">
         @csrf
         <label for="name">Name</label>
         <input type="text" name="name"  value="{{$movie -> name}}">
