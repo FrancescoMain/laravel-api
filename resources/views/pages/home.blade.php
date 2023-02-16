@@ -17,7 +17,7 @@
                     @endforeach
                 </ul>
                 <a href="{{route ('movie.edit', $movie)}}">edit</a>
-                <a href="">delete</a>
+                <a href="{{route ('movie.delete', $movie)}}">delete</a>
             @endforeach
         </ul>
     @endforeach
